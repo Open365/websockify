@@ -1,0 +1,7 @@
+.idea/
+*.log
+**/version
+*builder/contents*
+pkgs
+node_modules/
+/npm-debug.log

@@ -1,0 +1,11 @@
+{
+  "name": "NetMeasurer",
+  "version": "0.0.1",
+  "dependencies": {
+    "nodejs-websocket": "1.2.1"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=0.10.0"
+  }
+}
