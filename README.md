@@ -64,18 +64,6 @@ ws = new WebSocket('ws://localhost:8008/websockify/host/127.0.0.1/port/6000/type
 	$ node websockify.js
 ```
 
-* Test original python websockify (forks)
-
-```bash
-	$ ./websockify.py 8000 192.168.3.168:5901
-```
-
-* Test java websockify
-
-```bash
-	$ mvn exec:java -Dexec.mainClass="com.netiq.websockify.Websockify" -Dexec.args="--enable-ssl 8000 192.168.3.156 5900 --keystore /home/sergio/git/com.eyeos.commons/websockify/otherResources/keystoks --keystore-password password"
-```
-
 * Open SPICE client
 
 ```bash

@@ -4,7 +4,7 @@ MAINTAINER eyeos
 ENV InstallationDir /var/service/
 ENV WHATAMI websockify
 
-RUN yum install -y python-websockify openssl libstdc++-static && \
+RUN yum install -y openssl && \
     yum clean all
 
 WORKDIR ${InstallationDir}
