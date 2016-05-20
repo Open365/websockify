@@ -46,6 +46,8 @@ process.on('uncaughtException', function(err) {
 if (globalConfig.useWithoutCluster) {
 	var websockifyServer = new Server(httpsServer, 0);
 	websockifyServer.start(false);
+    var notifier = new Notifier();
+    notifier.registerService();
 } else {
     if (cluster.isMaster) {
         logger.info('# [' + (new Date()).getTime() + '] Starting Websockify service');
@@ -58,6 +60,9 @@ if (globalConfig.useWithoutCluster) {
         httpsServer.on('request', monitor.handleRequest);
 
         httpsServer.listen(globalConfig.source.port + 1);
+
+        var notifier = new Notifier();
+        notifier.registerService();
 
         for (var i = 0; i < globalConfig.local.workers; i++) {
             var worker = cluster.fork();
@@ -84,6 +89,3 @@ if (globalConfig.useWithoutCluster) {
 		websockifyServer.start(true);
     }
 }
-
-var notifier = new Notifier();
-notifier.registerService();
