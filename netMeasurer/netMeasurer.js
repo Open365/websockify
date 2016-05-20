@@ -20,11 +20,15 @@
 
 
 var ws = require("nodejs-websocket");
+var Notifier = require('eyeos-service-ready-notify');
+var uuid = require('uuid');
 var settings = require("./settings");
 
 console.log("Creating websocket pong server at port ", settings.port);
 
 ws.createServer(function (conn) {
+    var notifier = new Notifier();
+    notifier.registerService(uuid.v4().split('-')[4], 'netMesurer', null, settings.port);
 	conn.on("text", function (str) {
 		conn.sendText("pong");
 	});
