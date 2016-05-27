@@ -6,17 +6,16 @@
   "author": "eyeOS",
   "homepage": "http://www.eyeos.com/",
   "dependencies": {
-    "bufferutil": "1.2.1",
-    "extend": "1.2.1",
+    "extend": "^1.2.1",
     "eyeos-service-ready-notify": "*",
     "log2out": "*",
-    "nodeunit": "0.8.2",
     "policyfile": "0.0.5",
-    "utf-8-validate": "1.2.1",
-    "ws": "0.4.32"
+    "utf-8-validate": "^1.2.1",
+    "ws": "^0.4.32"
   },
   "devDependencies": {
     "eyeos-gruntfile": "*",
+    "nodeunit": "^0.8.2",
     "chai": "1.8.0",
     "sinon": "1.7.3",
     "mocha": "1.20.1",
