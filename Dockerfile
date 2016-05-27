@@ -14,7 +14,7 @@ RUN cd netMeasurer && npm install && npm cache clean && cd ..
 
 RUN apk update && apk add --no-cache curl make gcc g++ git python dnsmasq bash && \
     mkdir -p $HOME && \
-    npm install -g istanbul
+    npm install -g istanbul && \
     npm install --verbose --production && \
     npm cache clean
 
