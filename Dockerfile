@@ -8,12 +8,13 @@ WORKDIR ${InstallationDir}
 
 CMD ${InstallationDir}/start.sh
 
+COPY alpine-*.list /var/service/
 COPY . ${InstallationDir}
 
 RUN cd netMeasurer && npm install && npm cache clean && cd ..
 
 RUN apk update && \
-    /scripts-base/installExtraBuild.sh && \
+    /scripts-base/buildDependencies.sh --production --install && \
     mkdir -p $HOME && \
     npm install -g istanbul && \
     npm install --verbose --production && \
@@ -22,5 +23,5 @@ RUN apk update && \
 WORKDIR src
 
 RUN bash ${InstallationDir}/src/generate-keys.sh && \
-    /scripts-base/deleteExtraBuild.sh && \
+    /scripts-base/buildDependencies.sh --production --purgue && \
     rm -r /etc/ssl /var/cache/apk/* /tmp/*
