@@ -1,0 +1,5 @@
+# Install packages to images docker, "common" is declared into dependencies-extra of alpine6-node-base.
+add="$common"
+
+# Delete packages to images docker, "common" is declared into dependencies-extra of alpine6-node-base.
+del="$common"

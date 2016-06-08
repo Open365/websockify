@@ -2,7 +2,8 @@
   "name": "NetMeasurer",
   "version": "0.0.1",
   "dependencies": {
-    "nodejs-websocket": "1.2.1"
+    "nodejs-websocket": "1.6.0",
+    "uuid": "^2.0.2"
   },
   "devDependencies": {},
   "engines": {

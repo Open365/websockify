@@ -1,21 +1,26 @@
-FROM docker-registry.eyeosbcn.com/eyeos-fedora21-node-base
-MAINTAINER eyeos
+FROM docker-registry.eyeosbcn.com/alpine6-node-base
 
-ENV InstallationDir /var/service/
 ENV WHATAMI websockify
 
-RUN yum install -y openssl && \
-    yum clean all
+ENV InstallationDir /var/service/
 
 WORKDIR ${InstallationDir}
+
+CMD ${InstallationDir}/start.sh
+
 COPY . ${InstallationDir}
 
 RUN cd netMeasurer && npm install && npm cache clean && cd ..
 
-WORKDIR src
-RUN bash ${InstallationDir}/src/generate-keys.sh
-
-RUN npm install --verbose && \
+RUN apk update && \
+    /scripts-base/buildDependencies.sh --production --install && \
+    mkdir -p $HOME && \
+    npm install -g istanbul && \
+    npm install --verbose --production && \
     npm cache clean
 
-CMD ${InstallationDir}/start.sh
+WORKDIR src
+
+RUN bash ${InstallationDir}/src/generate-keys.sh && \
+    /scripts-base/buildDependencies.sh --production --purgue && \
+    rm -r /etc/ssl /var/cache/apk/* /tmp/*
