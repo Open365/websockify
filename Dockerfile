@@ -8,7 +8,6 @@ WORKDIR ${InstallationDir}
 
 CMD ${InstallationDir}/start.sh
 
-COPY alpine-*.list /var/service/
 COPY . ${InstallationDir}
 
 RUN cd netMeasurer && npm install && npm cache clean && cd ..
