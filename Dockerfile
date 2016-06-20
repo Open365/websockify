@@ -12,8 +12,7 @@ COPY . ${InstallationDir}
 
 RUN cd netMeasurer && npm install && npm cache clean && cd ..
 
-RUN apk update && \
-    /scripts-base/buildDependencies.sh --production --install && \
+RUN /scripts-base/buildDependencies.sh --production --install && \
     mkdir -p $HOME && \
     npm install -g istanbul && \
     npm install --verbose --production && \
