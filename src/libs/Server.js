@@ -59,7 +59,7 @@ Server.prototype.start = function (isInCluster) {
 
 Server.prototype.onConnectionCallback = function(websocket, config) {
 	var self = this;
-	var isInCluster = !config.useWithoutCluster;
+	var isInCluster = config.useCluster;
 	if (isInCluster) {
 		var strSocket = '[' + (new Date()).getTime() + '][' + this.pid + '][' + websocket.remoteAddress + ':' + websocket.remotePort + ':' + config.target.port + '] ';
 	} else {

@@ -18,10 +18,10 @@ ws = new WebSocket('ws://localhost:8008/websockify/destInfoToken/68025b6c-2db5-4
 
 ### Development Mode
 
-To be able to debug, set an environment variable, so that **Websockify** does not use node cluster:
+To be able to debug, the service should not use node cluster, however this is disabled by default with an envar:
 
 ```bash
-export EYEOS_WEBSOCKIFY_USE_WITHOUT_CLUSTER=true
+export EYEOS_WEBSOCKIFY_USE_CLUSTER=false
 ```
 
 * Connect using an url in the client
