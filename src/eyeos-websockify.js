@@ -43,7 +43,8 @@ process.on('uncaughtException', function(err) {
 	logger.error(err.stack);
 });
 
-if (globalConfig.useWithoutCluster) {
+if (!globalConfig.useCluster) {
+    httpsServer.listen(globalConfig.source.port);
 	var websockifyServer = new Server(httpsServer, 0);
 	websockifyServer.start(false);
     var notifier = new Notifier();

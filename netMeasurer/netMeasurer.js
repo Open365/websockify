@@ -26,10 +26,13 @@ var settings = require("./settings");
 
 console.log("Creating websocket pong server at port ", settings.port);
 
-ws.createServer(function (conn) {
-    var notifier = new Notifier();
-    notifier.registerService(uuid.v4().split('-')[4], 'netMesurer', null, settings.port);
+var server = ws.createServer(function (conn) {
 	conn.on("text", function (str) {
 		conn.sendText("pong");
 	});
-}).listen(settings.port);
+});
+
+server.listen(settings.port, function() {
+    var notifier = new Notifier();
+    notifier.registerService(uuid.v4().split('-')[4], 'netMesurer', null, settings.port);
+});

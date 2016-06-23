@@ -40,7 +40,7 @@ var config = {
 	// == Settings
 
 	protocol: process.env.EYEOS_WEBSOCKIFY_PROTOCOL || 'https',
-	useWithoutCluster: process.env.EYEOS_WEBSOCKIFY_USE_WITHOUT_CLUSTER === "true" || false,
+	useCluster: process.env.EYEOS_WEBSOCKIFY_USE_CLUSTER === "true" || false,
 
 	secretSharer: {
 		host: process.env.EYEOS_WEBSOCKIFY_REDIS_HOST || 'redis.service.consul',
